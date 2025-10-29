@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.10.0)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+project(RPN CXX)
+add_executable(RPN main.cpp)
+target_compile_features(RPN PRIVATE cxx_std_23)
+set_target_properties(RPN PROPERTIES CXX_STANDARD_REQUIRED ON)

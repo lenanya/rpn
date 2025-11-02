@@ -20,8 +20,8 @@ char ops[ops_len] = {
 };
 
 bool is_op(char c) {
-    for (int i = 0; i < ops_len; ++i) {
-        if (c == ops[i]) return true;
+    for (auto o: ops) {
+        if (c == o) return true;
     }
     return false;
 }
@@ -53,8 +53,7 @@ public:
         float result = 0;
         vector<float> stack;
         //println("Solve");
-        for (int i = 0; i < this->size(); ++i) {
-            const RpnNode& node = this->at(i);
+        for (auto& node: *this) {
             switch (node.type) {
                 case NUMBER:
                     //println("NUMBER: {}", node.num);
@@ -94,8 +93,7 @@ public:
         vector<string> tokens;
         vector<char> shunting_yard;
         split_string(tokens, str);
-        for (int i = 0; i < tokens.size(); i++) {
-            string& token = tokens[i];
+        for (auto& token: tokens) {
             if (token.size() == 1 && is_op(token[0])) {
                 char op = token[0];
                 if (shunting_yard.empty()) {
